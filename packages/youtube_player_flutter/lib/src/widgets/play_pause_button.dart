@@ -86,11 +86,28 @@ class _PlayPauseButtonState extends State<PlayPauseButton>
             onTap: () => _controller.value.isPlaying
                 ? _controller.pause()
                 : _controller.play(),
-            child: AnimatedIcon(
-              icon: AnimatedIcons.play_pause,
-              progress: _animController.view,
-              color: Colors.white,
-              size: 60.0,
+            child: Container(
+              width: 64,
+              height: 64,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.black.withOpacity(0.6),
+              ),
+              child: Center(
+                child: AnimatedContainer(
+                  duration: const Duration(milliseconds: 300),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                  ),
+                  child: Icon(
+                    _controller.value.isPlaying
+                        ? Icons.pause
+                        : Icons.play_arrow,
+                    color: Colors.white,
+                    size: 60.0,
+                  ),
+                ),
+              ),
             ),
           ),
         ),
